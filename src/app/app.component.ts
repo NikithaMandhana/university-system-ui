@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonServiceService } from './services/common-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'university-ui';
+  userRole : string = this.commonService.userRole;
+  constructor(private router: Router, private commonService : CommonServiceService) {
+  }
 }

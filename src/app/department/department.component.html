@@ -1,0 +1,61 @@
+<div class="tab">
+    <!--<a *ngIf="(userRole == 'USER_ADMIN')" class="tablinks" routerLink="/admin">Admin</a> -->
+    <a *ngIf="(userRole == 'USER_ADMIN' || userRole == 'USER_STUDENT')" class="tablinks" routerLink="/student">Student</a>
+    <a *ngIf="(userRole == 'USER_ADMIN' || userRole == 'USER_FACULTY')" class="tablinks" routerLink="/faculty">Faculty</a>
+    <a *ngIf="(userRole == 'USER_ADMIN')" class="tablinks" routerLink="/department">Department</a>
+    <a *ngIf="(userRole == 'USER_ADMIN')" class="tablinks" routerLink="/payment">Payment</a>
+</div>
+<p>Department Registration!</p>
+<div>
+  <form class="example-form">
+      <table align = "right" style="margin-right: 2%;">
+          <tr>
+              <td>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Department Id</mat-label>
+                      <input matInput placeholder="Enter Student ID" name="departmentId"
+                      [(ngModel)] ="departmentId">
+                  </mat-form-field>
+              </td>
+              <td>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Enter Department Name</mat-label>
+                      <input matInput placeholder="Enter Student Name" name="departmentName"
+                      [(ngModel)] ="departmentName">
+                  </mat-form-field>
+              </td>
+              <td>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Enter Location Name</mat-label>
+                      <input matInput placeholder="Enter Location Name" name="location" [(ngModel)] ="location">
+                  </mat-form-field>
+              </td>
+          </tr>
+          <tr>
+              <td colspan="4" align="right">
+                  <button mat-raised-button color="primary" (click)="saveDepartment()">Save</button>
+                  <button mat-raised-button color="primary" (click)="updateDepartment()">Update</button>
+                  <button mat-raised-button color="primary" (click)="getDepartmentById()">Get</button>
+                  <button mat-raised-button color="primary" (click)="deleteDepartment()">Delete</button>
+              </td>
+          </tr>
+      </table>
+  </form>
+</div>
+<div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *matHeaderCellDef>{{ columnDisplayNameMap[column] }}</th>
+    <td mat-cell *matCellDef="let dept">{{ dept[column] }}</td>
+  </ng-container>
+  <tr mat-row *matRowDef="let departmentRow; columns: displayedColumns;">
+    <!-- <ng-container matColumnDef="actions">
+      <td mat-cell *matCellDef="let departmentRow">
+        <button mat-button (click)="loadDepartment(departmentRow)">Update</button>
+        <button mat-button (click)="delDepartment(departmentRow)">Delete</button>
+      </td>
+    </ng-container> -->
+  </tr>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+</table>
+</div>     

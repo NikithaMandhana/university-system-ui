@@ -1,0 +1,30 @@
+<div class="form-container">
+    <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input matInput placeholder="Enter your name" name="usename"
+            [(ngModel)] ="userName">
+        </mat-form-field><br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Enter your password" value="" name="password" type="password" [(ngModel)]= "password">
+        </mat-form-field><br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>User Id</mat-label>
+            <input matInput placeholder="Enter User Id" value="" name="userId" type="userId" [(ngModel)]= "userId">
+        </mat-form-field><br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Enter Email Id" value="" name="emailId" type="emailId" [(ngModel)]= "emailId">
+        </mat-form-field><br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Select User Role</mat-label>
+            <select [(ngModel)]="userRole" [ngModelOptions]="{standalone: true}" class="form-control" matNativeControl required>
+                <option *ngFor="let role of userRoles" [ngValue]="role.id">
+                    {{ role.name }}
+                </option>
+            </select>
+          </mat-form-field>
+        <button mat-raised-button color="primary" (click)="createUser()">Create</button>
+    </form>
+</div>

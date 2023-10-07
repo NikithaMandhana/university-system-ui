@@ -1,0 +1,17 @@
+<div class="form-container">
+    <div *ngIf="showMessage" class="successDiv">{{successMsg}}</div>
+    <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>User Name</mat-label>
+        <input matInput placeholder="Enter your name" name="usename"
+        [(ngModel)] ="userName">
+        </mat-form-field><br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Enter your password" value="" name="password" type="password" [(ngModel)]= "password">
+        </mat-form-field><br/>
+        <button mat-raised-button color="primary" (click)="submit()">Log In</button>
+        <button mat-raised-button color="primary" (click)="registerUser()">Register User</button>
+        <span *ngIf="!isAuthenticated">You are entering wrong credentials</span>
+    </form>
+</div>

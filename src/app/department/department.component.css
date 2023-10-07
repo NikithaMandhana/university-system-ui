@@ -23,4 +23,11 @@
   /* Create an active/current tablink class */
   .tab a.active {
     background-color: #ccc;
-  } 
+  }
+  
+  .mat-mdc-raised-button:not(:disabled) {
+    color: var(--mdc-protected-button-label-text-color, inherit);
+    margin-left: 4%;
+    vertical-align: flex-end;
+    margin-bottom: 2%;
+  }

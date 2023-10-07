@@ -1,0 +1,104 @@
+<div class="tab">
+    <!--<a *ngIf="(userRole == 'USER_ADMIN')" class="tablinks" routerLink="/admin">Admin</a> -->
+    <a *ngIf="(userRole == 'USER_ADMIN' || userRole == 'USER_STUDENT')" class="tablinks" routerLink="/student">Student</a>
+    <a *ngIf="(userRole == 'USER_ADMIN' || userRole == 'USER_FACULTY')" class="tablinks" routerLink="/faculty">Faculty</a>
+    <a *ngIf="(userRole == 'USER_ADMIN')" class="tablinks" routerLink="/department">Department</a>
+    <a *ngIf="(userRole == 'USER_ADMIN')" class="tablinks" routerLink="/payment">Payment</a>
+</div>
+<p>Faculty Registration!</p>
+<div>
+    <form class="example-form">
+        <table align = "right" style="margin-right: 2%;">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Faculty Id</mat-label>
+                        <input matInput placeholder="Enter Student ID" name="facultyId"
+                        [(ngModel)] ="facultyId">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Enter Faculty Name</mat-label>
+                        <input matInput placeholder="Enter Student Name" name="facultyName"
+                        [(ngModel)] ="facultyName">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Enter Specialization</mat-label>
+                        <input matInput placeholder="Enter Father's Name" name="specialization"
+                        [(ngModel)] ="specialization">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Enter Age</mat-label>
+                        <input matInput placeholder="Enter Age" name="age"
+                        [(ngModel)] ="age">
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Enter Gender</mat-label>
+                        <input matInput placeholder="Enter Gender" name="gender"
+                        [(ngModel)] ="gender">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Enter Mobile Number</mat-label>
+                        <input matInput placeholder="Enter Mobile Number" name="mobileNumber"
+                        [(ngModel)] ="mobileNumber">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Enter Designation</mat-label>
+                        <input matInput placeholder="Enter Designation" name="designation"
+                        [(ngModel)] ="designation">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Select a Department</mat-label>
+                        <select [(ngModel)]="department" [ngModelOptions]="{standalone: true}" class="form-control" matNativeControl required>
+                            <option *ngFor="let item of departments; let i = index" [ngValue]="item">
+                                {{item.departmentName}}
+                            </option>
+                        </select>
+                      </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" align="right">
+                    <button mat-raised-button color="primary" (click)="saveFaculty()">Save</button>
+                    <button mat-raised-button color="primary" (click)="updateFaculty()">Update</button>
+                    <button mat-raised-button color="primary" (click)="getFacultyById()">Get</button>
+                    <button mat-raised-button color="primary" (click)="deleteFaculty()">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef>{{ columnDisplayNameMap[column] }}</th>
+      <td mat-cell *matCellDef="let facultyRow">
+        <ng-container *ngIf="column === 'department'">
+          {{ facultyRow.department?.departmentName }}
+        </ng-container>
+        <ng-container *ngIf="column !== 'department'">
+          {{ facultyRow[column] }}
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let facultyRow; columns: displayedColumns"></tr>
+  </table>
+</div>
+                    

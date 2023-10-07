@@ -1,0 +1,117 @@
+<h2>Welcome to Admin Page</h2>
+<div class="content" id="pageContent">
+  <p>
+    Hi, If you have already signed up for this university, then please click on the
+    sign in button, if not please click on the register button and register to the university!
+  </p>
+  <p>
+    Once you have registered, please sign in again and then you could access the Student, Faculty
+    and Department list.
+  </p>
+</div>
+
+<div>
+  <button (click)="toggleRegister()">Register</button><br/>
+  <button (click)="toggleSignIn()">Sign In</button>
+</div>
+
+<div *ngIf="showRegister">
+  <h3>Register User</h3>
+  <div>
+    <table>
+      <tr>
+        <td>User ID</td>
+        <td><input type="text" [(ngModel)]="userId" /></td>
+      </tr>
+      <tr>
+        <td>User Name</td>
+        <td><input type="text" [(ngModel)]="userName" /></td>
+      </tr>
+      <tr>
+        <td>Email ID</td>
+        <td><input type="text" [(ngModel)]="emailId" /></td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td><input type="password" [(ngModel)]="password" /></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button (click)="registerUser()">Register User</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div *ngIf="showSignIn">
+  <h3>Sign In</h3>
+  <div>
+    <table>
+      <tr>
+        <td>User Name</td>
+        <td><input type="text" [(ngModel)]="userName" /></td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td><input type="password" [(ngModel)]="password" /></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button (click)="registerUser()">Sign In</button> <!--To be changed-->
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<ul *ngIf="userRegistered">
+<button (click)="fetchStudentDetails()">Student Details</button><br/>
+<button (click)="fetchFacultyDetails()">Faculty Details</button><br/>
+<button (click)="fetchDepartmentDetails()">Department Details</button><br/>
+  <div>
+    <h3>Student Details</h3>
+      <table>
+        <tr>
+          <th>Student ID</th>
+          <th>Student Name</th>
+          <th>Enrollment Year</th>
+        </tr>
+        <tr *ngFor="let student of students">
+          <td>{{ student.studentId }}</td>
+          <td>{{ student.studentName }}</td>
+          <td>{{ student.enrollmentYear }}</td>
+        </tr>
+      </table>
+  </div>
+  <div>
+    <h3>Faculty Details</h3>
+      <table>
+        <tr>
+          <th>Faculty ID</th>
+          <th>Faculty Name</th>
+          <th>Designation</th>
+        </tr>
+        <tr *ngFor="let faculty of faculties">
+          <td>{{ faculty.facultyId }}</td>
+          <td>{{ faculty.facultyName }}</td>
+          <td>{{ faculty.designation }}</td>
+        </tr>
+      </table>
+  </div>
+  <div>
+    <h3>Department Details</h3>
+      <table>
+        <tr>
+          <th>Department ID</th>
+          <th>Department Name</th>
+          <th>Location</th>
+        </tr>
+        <tr *ngFor="let department of departments">
+          <td>{{ department.departmentId }}</td>
+          <td>{{ department.departmentName }}</td>
+          <td>{{ department.location }}</td>
+        </tr>
+    </table>
+  </div>
+</ul>
