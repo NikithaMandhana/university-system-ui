@@ -1,8 +1,0 @@
-<div class="tab">
-    <!--<a *ngIf="(userRole == 'USER_ADMIN')" class="tablinks" routerLink="/admin">Admin</a> -->
-    <a *ngIf="(userRole == 'USER_ADMIN' || userRole == 'USER_STUDENT')" class="tablinks" routerLink="/student">Student</a>
-    <a *ngIf="(userRole == 'USER_ADMIN' || userRole == 'USER_FACULTY')" class="tablinks" routerLink="/faculty">Faculty</a>
-    <a *ngIf="(userRole == 'USER_ADMIN')" class="tablinks" routerLink="/department">Department</a>
-    <a *ngIf="(userRole == 'USER_ADMIN')" class="tablinks" routerLink="/payment">Payment</a>
-  </div>
-<p> Home Page </p>
